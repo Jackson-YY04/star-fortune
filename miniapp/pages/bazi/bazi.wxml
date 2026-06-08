@@ -1,0 +1,61 @@
+<view class="page">
+  <view wx:if="{{!result}}" class="form">
+    <text class="emoji">📅</text>
+    <text class="title">输入生辰八字</text>
+    <text class="desc">推演你的命运命盘</text>
+
+    <view class="picker-grid">
+      <view class="picker-item">
+        <text class="picker-label">出生年份</text>
+        <picker mode="selector" range="{{years}}" bindchange="onYear"><text class="picker-value">{{years[yi]}}年</text></picker>
+      </view>
+      <view class="picker-item">
+        <text class="picker-label">出生月份</text>
+        <picker mode="selector" range="{{months}}" bindchange="onMonth"><text class="picker-value">{{months[mi]}}月</text></picker>
+      </view>
+      <view class="picker-item">
+        <text class="picker-label">出生日期</text>
+        <picker mode="selector" range="{{days}}" bindchange="onDay"><text class="picker-value">{{days[di]}}日</text></picker>
+      </view>
+      <view class="picker-item">
+        <text class="picker-label">出生时辰</text>
+        <picker mode="selector" range="{{hours}}" bindchange="onHour"><text class="picker-value">{{hours[hi]}}时</text></picker>
+      </view>
+    </view>
+
+    <button class="btn-glow" bindtap="calculate" disabled="{{loading}}">
+      {{loading ? '天干地支推演中...' : '推演命盘'}}
+    </button>
+  </view>
+
+  <!-- 结果 -->
+  <view wx:else class="result">
+    <text class="result-title">四柱命盘</text>
+
+    <view class="pillars">
+      <view wx:for="{{['year','month','day','hour']}}" wx:key="*this" class="pillar">
+        <text class="pillar-label">{{item === 'year' ? '年柱' : item === 'month' ? '月柱' : item === 'day' ? '日柱' : '时柱'}}</text>
+        <text class="pillar-stem">{{result[item].stem}}</text>
+        <text class="pillar-branch">{{result[item].branch}}</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <text class="card-title">五行分布</text>
+      <view wx:for="{{elems}}" wx:key="key" class="elem-bar">
+        <text class="elem-label" style="color: {{item.color}}">{{item.label}}</text>
+        <view class="elem-track">
+          <view class="elem-fill" style="width: {{item.pct}}%; background: {{item.color}}"></view>
+        </view>
+        <text class="elem-count">{{item.count}}</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <text class="card-title">命盘解析</text>
+      <text class="card-text">{{result.analysis}}</text>
+    </view>
+
+    <button class="btn-purple" bindtap="reset">重排命盘</button>
+  </view>
+</view>

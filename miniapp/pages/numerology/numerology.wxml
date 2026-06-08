@@ -1,0 +1,58 @@
+<view class="page">
+  <view wx:if="{{!result}}" class="form">
+    <text class="emoji">🔢</text>
+    <text class="title">探索生命数字</text>
+    <text class="desc">通过你的姓名和生日\n揭示属于你的数字密码</text>
+
+    <view class="input-item">
+      <text class="input-label">姓名</text>
+      <input value="{{name}}" placeholder="请输入你的姓名" bindinput="onName" class="input" />
+    </view>
+
+    <view class="picker-row">
+      <view class="picker-item">
+        <text class="picker-label">年份</text>
+        <picker mode="selector" range="{{years}}" bindchange="onYear">
+          <text class="picker-value">{{years[yi]}}</text>
+        </picker>
+      </view>
+      <view class="picker-item">
+        <text class="picker-label">月份</text>
+        <picker mode="selector" range="{{months}}" bindchange="onMonth">
+          <text class="picker-value">{{months[mi]}}</text>
+        </picker>
+      </view>
+      <view class="picker-item">
+        <text class="picker-label">日期</text>
+        <picker mode="selector" range="{{days}}" bindchange="onDay">
+          <text class="picker-value">{{days[di]}}</text>
+        </picker>
+      </view>
+    </view>
+
+    <button class="btn-glow" bindtap="calculate" disabled="{{!name || loading}}">
+      {{loading ? '数字计算中...' : '计算灵数'}}
+    </button>
+  </view>
+
+  <!-- 结果 -->
+  <view wx:else class="result">
+    <text class="result-title">你的数字命运</text>
+
+    <view class="num-grid">
+      <view wx:for="{{numbers}}" wx:key="key" class="num-card">
+        <text class="num-label">{{item.label}}</text>
+        <text class="num-value {{item.master ? 'master' : ''}}">{{item.value}}</text>
+        <text wx:if="{{item.master}}" class="num-master">大师数</text>
+        <text class="num-desc">{{item.desc}}</text>
+      </view>
+    </view>
+
+    <view wx:for="{{readings}}" wx:key="title" class="card">
+      <text class="card-title">{{item.title}}</text>
+      <text class="card-text">{{item.text}}</text>
+    </view>
+
+    <button class="btn-purple" bindtap="reset">重新计算</button>
+  </view>
+</view>

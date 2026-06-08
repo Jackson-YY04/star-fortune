@@ -1,0 +1,110 @@
+.page {
+  min-height: 100vh;
+  background: #0A0A1A;
+  padding: 40rpx;
+  color: #fef3c7;
+}
+
+.emoji { font-size: 96rpx; display: block; text-align: center; }
+.title { font-size: 42rpx; font-weight: 900; display: block; text-align: center; margin-top: 16rpx; }
+.desc { font-size: 24rpx; color: #888; display: block; text-align: center; margin-top: 8rpx; }
+
+/* 轮盘 */
+.wheel-wrap {
+  width: 520rpx; height: 520rpx; margin: 40rpx auto;
+  position: relative;
+  border-radius: 50%;
+}
+
+.wheel-ring {
+  position: absolute; border-radius: 50%;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+
+.wheel-ring-1 {
+  width: 100%; height: 100%;
+  border: 2rpx solid rgba(251,191,36,0.2);
+  animation: spin 30s linear infinite;
+}
+
+.wheel-ring-2 {
+  width: 70%; height: 70%;
+  border: 1rpx solid rgba(251,191,36,0.1);
+  animation: spinRev 20s linear infinite;
+}
+
+@keyframes spin { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes spinRev { from { transform: translate(-50%,-50%) rotate(360deg); } to { transform: translate(-50%,-50%) rotate(0deg); } }
+
+.sign-btn {
+  position: absolute;
+  width: 72rpx; height: 72rpx;
+  border-radius: 50%;
+  background: rgba(30,30,50,0.9);
+  border: 2rpx solid rgba(251,191,36,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  font-size: 28rpx;
+  transition: all 0.3s;
+}
+
+.sign-btn.active {
+  background: #fbbf24;
+  border-color: #fbbf24;
+  color: #1a1a2e;
+  box-shadow: 0 0 30rpx rgba(251,191,36,0.6);
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.selected-name {
+  display: block; text-align: center; color: #fbbf24; font-size: 28rpx; margin-bottom: 32rpx;
+}
+
+.btn-glow {
+  display: block; width: 360rpx; margin: 0 auto;
+}
+
+/* 结果卡片 */
+.sign-name {
+  font-size: 56rpx; font-weight: 900; display: block; text-align: center;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.date { font-size: 22rpx; color: #666; display: block; text-align: center; margin-top: 8rpx; }
+
+.card {
+  background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(15,15,27,0.9));
+  border: 1rpx solid rgba(251,191,36,0.15);
+  border-radius: 20rpx; padding: 28rpx; margin-top: 24rpx;
+}
+
+.main-card { margin-top: 40rpx; }
+
+.card-title { font-size: 32rpx; font-weight: bold; color: #fbbf24; }
+
+.stars { display: flex; align-items: center; gap: 4rpx; margin: 12rpx 0; }
+.star { font-size: 28rpx; color: rgba(251,191,36,0.2); }
+.star.on { color: #fbbf24; }
+
+.score { font-size: 22rpx; color: #fbbf24; margin-left: 12rpx; }
+
+.card-text { font-size: 26rpx; color: #aaa; line-height: 1.6; }
+
+.card-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16rpx; margin-top: 24rpx; }
+.card-icon { font-size: 40rpx; display: block; }
+
+.lucky-row { display: flex; justify-content: center; gap: 24rpx; margin: 32rpx 0; }
+
+.lucky-chip {
+  background: rgba(251,191,36,0.08);
+  border: 1rpx solid rgba(251,191,36,0.2);
+  border-radius: 50rpx;
+  padding: 12rpx 32rpx;
+  font-size: 24rpx;
+  color: #fbbf24;
+}
+
+.btn-purple { display: block; width: 360rpx; margin: 0 auto; }

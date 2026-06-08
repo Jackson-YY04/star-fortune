@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <!-- 背景渐变 -->
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#0f0f23"/>
+      <stop offset="100%" stop-color="#0a0a1a"/>
+    </radialGradient>
+
+    <!-- 中心光晕 -->
+    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(212,168,67,0.4)"/>
+      <stop offset="40%" stop-color="rgba(212,168,67,0.1)"/>
+      <stop offset="100%" stop-color="rgba(212,168,67,0)"/>
+    </radialGradient>
+
+    <!-- 金色渐变 -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="50%" stop-color="#d4a843"/>
+      <stop offset="100%" stop-color="#92400e"/>
+    </linearGradient>
+
+    <!-- 星芒渐变 -->
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+
+    <!-- 辉光滤镜 -->
+    <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 剪切为圆形 -->
+    <clipPath id="circleClip">
+      <circle cx="100" cy="100" r="95"/>
+    </clipPath>
+  </defs>
+
+  <!-- 圆形底 -->
+  <circle cx="100" cy="100" r="97" fill="#0a0a1a" stroke="url(#goldGrad)" stroke-width="2"/>
+
+  <!-- 内容组 -->
+  <g clip-path="url(#circleClip)">
+    <!-- 背景填充 -->
+    <rect width="200" height="200" fill="url(#bgGrad)"/>
+
+    <!-- 中心光晕 -->
+    <circle cx="100" cy="95" r="60" fill="url(#glowGrad)"/>
+
+    <!-- 外轨道环 -->
+    <ellipse cx="100" cy="95" rx="72" ry="72" fill="none" stroke="rgba(251,191,36,0.12)" stroke-width="0.8"
+             stroke-dasharray="4,8"/>
+    <ellipse cx="100" cy="95" rx="62" ry="62" fill="none" stroke="rgba(251,191,36,0.08)" stroke-width="0.5"
+             transform="rotate(30,100,95)"/>
+
+    <!-- 星座连线 -->
+    <g stroke="rgba(251,191,36,0.2)" stroke-width="0.7" fill="none">
+      <!-- 连接线 -->
+      <line x1="50" y1="45" x2="65" y2="60"/>
+      <line x1="65" y1="60" x2="90" y2="55"/>
+      <line x1="90" y1="55" x2="100" y2="70"/>
+      <line x1="150" y1="40" x2="140" y2="55"/>
+      <line x1="140" y1="55" x2="115" y2="60"/>
+      <line x1="115" y1="60" x2="100" y2="70"/>
+      <line x1="100" y1="70" x2="75" y2="85"/>
+      <line x1="75" y1="85" x2="60" y2="105"/>
+      <line x1="100" y1="70" x2="125" y2="80"/>
+      <line x1="125" y1="80" x2="145" y2="100"/>
+      <line x1="125" y1="80" x2="115" y2="110"/>
+      <line x1="115" y1="110" x2="100" y2="125"/>
+      <line x1="100" y1="125" x2="80" y2="130"/>
+      <line x1="100" y1="125" x2="130" y2="140"/>
+      <line x1="60" y1="105" x2="80" y2="130"/>
+      <line x1="145" y1="100" x2="130" y2="140"/>
+      <!-- 底部线 -->
+      <line x1="65" y1="150" x2="100" y2="125"/>
+      <line x1="135" y1="150" x2="100" y2="125"/>
+    </g>
+
+    <!-- 星星节点 -->
+    <g filter="url(#glowFilter)">
+      <!-- 顶部 -->
+      <circle cx="50" cy="45" r="2.5" fill="white"/><circle cx="50" cy="45" r="5" fill="rgba(251,191,36,0.3)"/>
+      <circle cx="150" cy="40" r="2.5" fill="white"/><circle cx="150" cy="40" r="5" fill="rgba(251,191,36,0.3)"/>
+      <!-- 中上 -->
+      <circle cx="65" cy="60" r="2" fill="white"/>
+      <circle cx="140" cy="55" r="2" fill="white"/>
+      <circle cx="90" cy="55" r="2.5" fill="white"/><circle cx="90" cy="55" r="5" fill="rgba(251,191,36,0.3)"/>
+      <circle cx="115" cy="60" r="2.5" fill="white"/><circle cx="115" cy="60" r="5" fill="rgba(251,191,36,0.3)"/>
+      <!-- 中心大星 -->
+      <circle cx="100" cy="70" r="4" fill="white" filter="url(#softGlow)"/>
+      <circle cx="100" cy="70" r="8" fill="rgba(251,191,36,0.3)"/>
+      <!-- 中部 -->
+      <circle cx="75" cy="85" r="2" fill="white"/>
+      <circle cx="125" cy="80" r="3" fill="white"/><circle cx="125" cy="80" r="6" fill="rgba(251,191,36,0.3)"/>
+      <!-- 下部 -->
+      <circle cx="60" cy="105" r="2.5" fill="white"/><circle cx="60" cy="105" r="5" fill="rgba(212,168,67,0.2)"/>
+      <circle cx="145" cy="100" r="2.5" fill="white"/><circle cx="145" cy="100" r="5" fill="rgba(212,168,67,0.2)"/>
+      <circle cx="115" cy="110" r="2" fill="white"/>
+      <circle cx="100" cy="125" r="3" fill="white"/><circle cx="100" cy="125" r="6" fill="rgba(251,191,36,0.3)"/>
+      <circle cx="80" cy="130" r="2" fill="white"/>
+      <circle cx="130" cy="140" r="2" fill="white"/>
+      <!-- 底边 -->
+      <circle cx="65" cy="150" r="2" fill="white"/>
+      <circle cx="135" cy="150" r="2" fill="white"/>
+    </g>
+
+    <!-- 中心菱形星宿 -->
+    <g filter="url(#softGlow)" transform="translate(100,95)">
+      <path d="M0,-24 L6,-6 L24,0 L6,6 L0,24 L-6,6 L-24,0 L-6,-6 Z"
+            fill="url(#starGrad)" opacity="0.9"/>
+      <!-- 内部小光点 -->
+      <circle cx="0" cy="0" r="6" fill="white" opacity="0.8"/>
+    </g>
+
+    <!-- 漂浮小星光 -->
+    <g opacity="0.6">
+      <circle cx="85" cy="42" r="1"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="118" cy="48" r="1"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/></circle>
+      <circle cx="72" cy="72" r="1"><animate attributeName="opacity" values="0.3;0.9;0.3" dur="4s" repeatCount="indefinite"/></circle>
+      <circle cx="128" cy="68" r="1"><animate attributeName="opacity" values="0.6;1;0.6" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle cx="55" cy="120" r="1"><animate attributeName="opacity" values="0.2;0.7;0.2" dur="2.8s" repeatCount="indefinite"/></circle>
+      <circle cx="148" cy="118" r="1"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" repeatCount="indefinite"/></circle>
+    </g>
+
+    <!-- 底部紫光 -->
+    <ellipse cx="100" cy="170" rx="60" ry="15" fill="rgba(124,58,237,0.12)" filter="url(#softGlow)"/>
+  </g>
+
+  <!-- 金色边框 -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="url(#goldGrad)" stroke-width="2.5"/>
+  <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(251,191,36,0.15)" stroke-width="0.5"/>
+</svg>

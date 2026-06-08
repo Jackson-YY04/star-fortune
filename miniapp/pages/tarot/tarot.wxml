@@ -1,0 +1,50 @@
+<view class="page">
+  <!-- 初始 -->
+  <view wx:if="{{phase === 'intro'}}" class="intro">
+    <text class="emoji">🃏</text>
+    <text class="title">经典三牌阵</text>
+    <text class="desc">在心中默念你的问题\n三张牌将揭示：过去·现在·未来</text>
+
+    <view class="card-preview">
+      <view wx:for="{{['过去','现在','未来']}}" wx:key="*this" class="preview-card">
+        <view class="preview-inner">
+          <text class="preview-star">★</text>
+        </view>
+        <text class="preview-label">{{item}}</text>
+      </view>
+    </view>
+
+    <button class="btn-glow" bindtap="startShuffle">开始抽牌</button>
+  </view>
+
+  <!-- 洗牌 -->
+  <view wx:elif="{{phase === 'shuffling'}}" class="shuffle">
+    <view class="shuffle-card animate">
+      <text class="shuffle-icon">✦</text>
+    </view>
+    <text class="shuffle-text">牌组正在洗牌中...</text>
+    <text class="shuffle-sub">命运正在选择属于你的牌</text>
+  </view>
+
+  <!-- 揭示 -->
+  <view wx:else class="reveal">
+    <view class="reveal-cards">
+      <view wx:for="{{cards}}" wx:key="id" class="reveal-card {{index < revealedCount ? 'flipped' : ''}}">
+        <view class="card-face {{item.isReversed ? 'reversed' : ''}}">
+          <block wx:if="{{index < revealedCount}}">
+            <text class="reveal-icon">{{item.isReversed ? '🔄' : '✨'}}</text>
+            <text class="reveal-name">{{item.nameCN}}</text>
+            <text class="reveal-pos {{item.isReversed ? 'rev' : ''}}">{{item.isReversed ? '逆位' : '正位'}}</text>
+            <text class="reveal-mean">{{item.isReversed ? item.reversed : item.upright}}</text>
+          </block>
+          <block wx:else>
+            <text class="reveal-unknown">?</text>
+          </block>
+        </view>
+        <text class="reveal-pos-label">{{item.position === 'past' ? '过去' : item.position === 'present' ? '现在' : '未来'}}</text>
+      </view>
+    </view>
+
+    <button wx:if="{{revealedCount >= 3}}" class="btn-purple" bindtap="reset">再测一次</button>
+  </view>
+</view>

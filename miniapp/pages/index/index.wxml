@@ -1,0 +1,29 @@
+<view class="container">
+  <canvas type="2d" id="starCanvas" class="canvas"></canvas>
+
+  <view class="overlay">
+    <view class="title-group">
+      <text class="title">星命回廊</text>
+      <text class="subtitle">旋转星盘，选择你的命运问卜</text>
+    </view>
+
+    <view class="altar-list">
+      <view
+        wx:for="{{altars}}"
+        wx:key="route"
+        class="altar-card"
+        style="--color: {{item.color}}"
+        data-route="{{item.route}}"
+        bindtap="navigateTo"
+      >
+        <text class="altar-icon">{{item.icon}}</text>
+        <text class="altar-label">{{item.label}}</text>
+        <text class="altar-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="hint">
+    <text>向上滑动浏览全部占卜</text>
+  </view>
+</view>

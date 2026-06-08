@@ -1,0 +1,45 @@
+<view class="page">
+  <view wx:if="{{!result}}" class="capture">
+    <text class="emoji">✋</text>
+    <text class="title">上传手掌照片</text>
+    <text class="desc">请确保手掌纹路清晰\n光线充足，露出掌心</text>
+
+    <view wx:if="{{!image}}" class="upload-box" bindtap="chooseImage">
+      <view class="upload-corners">
+        <view class="corner tl"></view><view class="corner tr"></view>
+        <view class="corner bl"></view><view class="corner br"></view>
+      </view>
+      <text class="upload-icon">📷</text>
+      <text class="upload-text">点击拍照或从相册选择</text>
+    </view>
+
+    <view wx:else class="preview-wrap">
+      <view class="preview-box">
+        <view class="scan-line"></view>
+        <image src="{{image}}" mode="aspectFill" class="preview-img" />
+      </view>
+      <view class="preview-actions">
+        <text class="action-link" bindtap="chooseImage">重新选择</text>
+      </view>
+    </view>
+
+    <button wx:if="{{image}}" class="btn-glow" bindtap="analyze" disabled="{{analyzing}}">
+      {{analyzing ? 'AI 分析中...' : '开始分析'}}
+    </button>
+  </view>
+
+  <!-- 结果 -->
+  <view wx:else class="result">
+    <text class="result-title">手相解读</text>
+
+    <view wx:for="{{lines}}" wx:key="key" class="line-card">
+      <view class="line-header">
+        <text class="line-name">{{item.name}}</text>
+        <text class="line-badge {{item.badgeColor}}">{{item.badgeText}}</text>
+      </view>
+      <text class="line-mean">{{item.meaning}}</text>
+    </view>
+
+    <button class="btn-purple" bindtap="reset">再看一次</button>
+  </view>
+</view>

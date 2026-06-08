@@ -1,0 +1,37 @@
+page {
+  background-color: #0A0A1A;
+  color: #fef3c7;
+  font-family: -apple-system, "PingFang SC", "Noto Serif SC", serif;
+}
+
+/* 全局按钮样式 */
+.btn-glow {
+  background: linear-gradient(135deg, #d4a843, #f5c852);
+  color: #1a1a2e;
+  border: none;
+  border-radius: 50rpx;
+  padding: 24rpx 64rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 0 30rpx rgba(212, 168, 67, 0.4);
+}
+
+.btn-glow:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+}
+
+.btn-purple {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+  border: none;
+  border-radius: 50rpx;
+  padding: 24rpx 64rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 0 30rpx rgba(124, 58, 237, 0.4);
+}
+
+.btn-purple:active {
+  transform: scale(0.96);
+}

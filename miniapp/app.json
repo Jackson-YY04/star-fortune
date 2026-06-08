@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/zodiac/zodiac",
+    "pages/tarot/tarot",
+    "pages/bazi/bazi",
+    "pages/palm/palm",
+    "pages/numerology/numerology"
+  ],
+  "window": {
+    "navigationBarTitleText": "星命回廊",
+    "navigationBarBackgroundColor": "#0A0A1A",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0A0A1A",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

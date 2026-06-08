@@ -1,0 +1,66 @@
+<view class="page">
+  <view wx:if="{{!result}}" class="selection">
+    <text class="emoji">♈</text>
+    <text class="title">选择你的星座</text>
+    <text class="desc">触摸星座符号，连接星空的力量</text>
+
+    <!-- 星座轮盘 -->
+    <view class="wheel-wrap">
+      <view class="wheel-ring wheel-ring-1"></view>
+      <view class="wheel-ring wheel-ring-2"></view>
+      <view
+        wx:for="{{signs}}"
+        wx:key="index"
+        class="sign-btn {{selectedIndex === index ? 'active' : ''}}"
+        style="top: {{item.top}}%; left: {{item.left}}%"
+        data-index="{{index}}"
+        bindtap="selectSign"
+      >
+        <text>{{item.char}}</text>
+      </view>
+    </view>
+
+    <text class="selected-name">{{selectedIndex !== null ? signs[selectedIndex].name + '座' : '请点击星盘上的星座'}}</text>
+
+    <button
+      class="btn-glow"
+      disabled="{{selectedIndex === null || loading}}"
+      bindtap="doFortune"
+    >
+      {{loading ? '星盘转动中...' : '开启运势'}}
+    </button>
+  </view>
+
+  <!-- 结果 -->
+  <view wx:else class="result">
+    <text class="sign-name">{{result.sign}}</text>
+    <text class="date">{{result.date}}</text>
+
+    <view class="card main-card">
+      <text class="card-title">综合运势</text>
+      <view class="stars">
+        <text wx:for="{{[1,2,3,4,5]}}" wx:key="*this" class="star {{overallFull > index ? 'on' : ''}}">★</text>
+        <text class="score">{{result.overall.score}}</text>
+      </view>
+      <text class="card-text">{{result.overall.text}}</text>
+    </view>
+
+    <view class="card-grid">
+      <view class="card" wx:for="{{types}}" wx:key="key">
+        <text class="card-icon">{{item.icon}}</text>
+        <text class="card-title">{{item.label}}</text>
+        <view class="stars">
+          <text wx:for="{{[1,2,3,4,5]}}" wx:key="*this" class="star {{item.full > index ? 'on' : ''}}">★</text>
+        </view>
+        <text class="card-text">{{item.text}}</text>
+      </view>
+    </view>
+
+    <view class="lucky-row">
+      <view class="lucky-chip">幸运色：{{result.luckyColor}}</view>
+      <view class="lucky-chip">幸运数字：{{result.luckyNumber}}</view>
+    </view>
+
+    <button class="btn-purple" bindtap="reset">再测一次</button>
+  </view>
+</view>
