@@ -41,7 +41,7 @@ function AppShell() {
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/star-fortune">
       <AppShell />
     </Router>
   );
